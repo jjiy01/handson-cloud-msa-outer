@@ -10,12 +10,21 @@ resource "google_container_cluster" "primary" {
   network    = google_compute_network.vpc.name
   subnetwork = google_compute_subnetwork.subnet.name
 
+  provider = google-beta
+
   master_auth {
     username = var.gke_username
     password = var.gke_password
 
     client_certificate_config {
       issue_client_certificate = false
+    }
+  }
+
+  addons_config {
+    istio_config {
+      disabled = false
+      auth     = "AUTH_MUTUAL_TLS"
     }
   }
 }
