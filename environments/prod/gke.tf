@@ -19,6 +19,11 @@ resource "google_container_cluster" "primary" {
       minimum = 4
       maximum = 12
     }
+    resource_limits {
+      resource_type = "memory"
+      minimum = 4
+      maximum = 16
+    }
   }
 
   master_auth {
