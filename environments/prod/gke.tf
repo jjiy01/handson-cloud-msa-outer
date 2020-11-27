@@ -69,4 +69,3 @@ module "gke_auth" {
   location     = google_container_cluster.primary.location
 }
  
-resource "kubernetes_namespace" "default" {}
