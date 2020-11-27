@@ -14,13 +14,11 @@ resource "google_container_cluster" "primary" {
 
   cluster_autoscaling {
     enabled = true
-    resource_limits = [
-      {
-        resource_type = cpu
-        minimum = 4
-        maximum = 12
-      }
-    ]
+    resource_limits {
+      resource_type = cpu
+      minimum = 4
+      maximum = 12
+    }
   }
 
   master_auth {
