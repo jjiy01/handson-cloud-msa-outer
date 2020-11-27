@@ -13,7 +13,7 @@ resource "google_container_cluster" "primary" {
   provider = google-beta
 
   cluster_autoscaling {
-    enabled = bool
+    enabled = true
   }
 
   master_auth {
