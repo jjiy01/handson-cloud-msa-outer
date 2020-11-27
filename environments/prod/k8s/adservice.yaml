@@ -30,28 +30,3 @@ spec:
     app: eshop-adservice
   ports:
   - port: 8095
----
-apiVersion: autoscaling/v2beta2
-kind: HorizontalPodAutoscaler
-metadata:
-  name: eshop-hpa
-spec:
-  maxReplicas: 5
-  minReplicas: 2
-  scaleTargetRef:
-    apiVersion: apps/v1
-    kind: Deployment
-    name: eshop-adservice
-  metrics:
-  - type: Resource
-    resource:
-      name: cpu
-      target:
-        type: Utilization
-        averageUtilization: 60
-  behavior:
-    scaleDown:
-      policies:
-      - type: Percent
-        value: 20
-        periodSeconds: 60
